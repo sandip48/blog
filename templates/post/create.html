@@ -1,0 +1,26 @@
+{% extends 'layout/base.html' %}
+{% block title %}
+  Post Create
+{% endblock title %}
+{% block content %}
+  <h1>
+    Create a new Post
+  </h1>
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{form.as_table}}
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+{% endblock content %}
+    <!-- <div class="mb-3">
+      <label for="title-label" class="form-label">Title</label>
+      <input type="text" class="form-control" name="title">
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Content</label>
+    
+    <textarea name='content'>
+
+    </textarea>
+</div> -->

@@ -1,0 +1,21 @@
+{% extends 'layout/base.html' %}
+{%block title %}
+  Post List
+{%endblock title %}
+{% block content %}
+    <h3>Create a new Post here</h3>
+    <form method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+          <label for="title-lable" class="form-label">Title</label>
+          <input type="text" class="form-control"  name="title"  value="{{post.title}}">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Content</label><br>
+          <br>
+          <br>
+          <textarea name="content">{{post.content}}</textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Update</button>
+      </form>
+{%endblock content %}
