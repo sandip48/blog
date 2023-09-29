@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     "post",
     "comment",
     "accounts",
-    
+    "profiles",
 ]
 
 MIDDLEWARE = [
@@ -80,8 +80,12 @@ WSGI_APPLICATION = 'blog.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': "Sandip1",
+        "USER":"postgres",
+        "PASSWORD":"postgres",
+        "HOST":"localhost",
+        "PORT":5432
     }
 }
 
@@ -103,7 +107,7 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-
+AUTH_USER_MODEL="accounts.User"
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
@@ -123,10 +127,17 @@ USE_TZ = True
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [BASE_DIR/"static"]
 
-MEDIA_URL='/method/'
+MEDIA_URL='/media/'
 MEDIA_ROOT=BASE_DIR/"media"
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-LOGIN_URL="/login/"
+LOGIN_URL="http://127.0.0.1:8000/login/"
+
+#Email Configurations
+EMAIL_HOST="smtp.gmail.com"
+EMAIL_HOST_USER="saktiraj100@gmail.com"
+EMAIL_PORT=587
+EMAIL_HOST_PASSWORD="oqjahmkhybwscqwi"
+EMAIL_USE_TLS=True

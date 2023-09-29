@@ -1,117 +1,39 @@
-<table id="home" border="4" width="100%" height="100%" cellpadding="20" cellspacing="10" bgcolor==Aqua">
-  <tr bgcolor="black">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <div class="container-fluid">
-        <td>
-          <a class="navbar-brand" href="{% url 'home' %}" textcolor="white" align="center">
-            <font face="Verdana" size="4" color=Aqua>
-              Blog
-            </font>
-          </a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-            aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-        </td>
-        <td>
-          |
-        </td>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <td>
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="{% url 'home' %}" color="white">
-                  <font face="Verdana" size="4" color=Aqua>
-                    Home
-                  </font>
-                </a>
-              </li>
-            </td>
-            <td>
-              |
-            </td>
-            <td>
-              <li class="nav-item">
-                <a class="nav-link {% if request.resolver_match.url_name == 'about' %} active 
-            {%endif%}" href="{% url 'about' %}" color="white">
-            <font face="Verdana" size="4" color=Aqua>
-              About
-            </font>
-          </a>
-              </li>
-            </td>
-            <td>
-              |
-            </td>
-            <td>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
-                  aria-expanded="false">
-                  <font face="Verdana" size="4" color=Aqua>
-                    Dropdown
-                  </font>
-                
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdown" color="white">
-                  <li><a class="dropdown-item" href="#">Action</a></li>
-                  <li><a class="dropdown-item" href="#">Another action</a></li>
-                  <li>
-                    <hr class="dropdown-divider">
-                  </li>
-                  <li><a class="dropdown-item" href="#">Something else here</a></li>
-                </ul>
-              </li>
-            </td>
-            <td>
-              |
-            </td>
-            <td>
-
-
-              <li class="nav-item">
-                <a class="nav-link disabled" href="{% url 'contact' %}" tabindex="-1" aria-disabled="true"
-                  color="white">
-                  <font face="Verdana" size="4" color=Aqua>
-                    Contact
-                  </font>
-                </a>
-              </li>
-            </td>
-            <td>
-              |
-            </td>
-          </ul>
-          <div class="d-flex">
-            {%if request.user.is_authenticated %}
-            <a href="{%url 'logout'%}">
-               <div class="btn btn-sm btn-outline-primary"> Logout</div>
-
-            </a>
-            {% else %}
-            <a href="{%url 'login' %}">
-              <div class="btn btn-sm btn-outline-secondary"> Login</div>
-            </a>
-             
-            <a href="{%url 'signup'%}">
-              <div class="btn btn-sm btn-outline-info"> Signup</div>
-            </a>
-            {% endif %}
-          </div>
-          <td>
-            <form class="d-flex">
-              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-outline-success" type="submit">
-                <font face="Verdana" size="4" color=Aqua>
-									Search
-								</font>
-              </button>
-            </form>
-          </td>
-        </div>
-      </div>
-    </nav>
-  </tr>
-</table>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="{% url 'home' %}">BLOG</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="navbar-nav justify-content-center fs-5  flex-grow-1" id="navbarNav">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active {% if request.resolver_match.url_name == 'home' %}  
+            {%endif%}" aria-current="page" href="{% url 'home' %}">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active {% if request.resolver_match.url_name == 'about' %} 
+            {%endif%}" href="{% url 'about' %}">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active {% if request.resolver_match.url_name == 'contact' %} 
+            {%endif%}" href="{% url 'contact' %}">Contact</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-but" >
+          {% if request.user.is_authenticated %}
+          <a class="btn btn-outline-light" href="{% url 'logout' %}">Logout</a>
+        </li>
+        {% else %}
+        <li class="nav-but">
+          <a class="btn btn-outline-light" href="{% url 'login' %}">Login</a>
+        </li>
+        <li class="nav-but">
+          <a class="btn btn-outline-light" href="{% url 'signup' %}">Signup</a>
+        </li>
+        {% endif %}
+      </ul>
+    </div>
+  </div>
+</nav>

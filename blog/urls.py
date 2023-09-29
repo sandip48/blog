@@ -21,8 +21,7 @@ from django.conf.urls.static import static
 from django.conf import settings
 from accounts.views import LoginView,SignUpView,LogoutView
 from post.views import IndexView
-
-
+from home.views import handle_404,handle_403,handle_500
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("",IndexView.as_view(),name="home"),
@@ -31,8 +30,12 @@ urlpatterns = [
     path("post/",include('post.urls')),
     path("login/",LoginView.as_view(),name="login"),
     path("logout/",LogoutView.as_view(),name="logout"),
-    
     path("signup/",SignUpView.as_view(),name="signup"),
+    path("error/404",handle_404,name="404_error"),
+    path("error/403",handle_403,name="403_error"),
+    path("error/500",handle_500,name="500_error"),
+    path("profile/",include('profiles.urls')),
+    
       
 ]
 urlpatterns+=static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

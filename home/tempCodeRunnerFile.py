@@ -1,1 +1,1 @@
-render(request,"index.html",
+render(request,"index.html")
